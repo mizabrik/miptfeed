@@ -237,8 +237,12 @@ p.cta-sub-title
 }
 .page-title
 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 40px;
+}
+.detail-image
+{
+    text-align: right;
 }
 #portfolio
 {
