@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for event in object_list %}
+<div class="row">
+	<!-- Card Projects -->
+	<div class="col-md-8 col-md-offset-2">
+		<div class="card">
+			<div class="card-title">{{ event.title }}</div>
+
+			<div class="card-content">
+				<p>{{ event.description }}</p>
+			</div>
+
+			<div class="card-action">
+				<div class = "time">{{ event.date }}</div>
+				<a href="{% url 'events:event-detail' pk=event.pk %}" target="new_blank">
+					Подробнее
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

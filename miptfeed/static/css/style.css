@@ -1,0 +1,153 @@
+/*
+    Theme Name: Tempo
+    Theme URL: https://bootstrapmade.com/tempo-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+*/
+
+/**************************************
+link & button
+**************************************/
+body {
+    padding-top: 80px;
+}
+
+.white
+{
+	color:#fff !important;
+}
+h1.cta-title
+{
+	font-size: 43px;
+}
+h1
+{
+	font-size: 36px;
+}
+/**************************************
+Header
+**************************************/
+.main-navigation
+{
+    border-bottom: 1px solid #eee;
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: rgba(231, 231, 231, 0.33);
+    padding: 20px 0px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #354242;
+    background-color: #fff;
+}
+.navbar-nav {
+    padding-top: 5px;
+}
+
+.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+	border-bottom: 2px solid #139BC9;
+    outline: none;
+}
+.navbar {
+	min-height: inherit;
+	margin-bottom: 0px;
+}
+.navbar-brand {
+	height: inherit;
+	font-family: 'Josefin Slab', serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 5px;
+    font-size: 42px;
+    margin-top: 5px;
+}
+
+.navbar-default .navbar-brand {
+    color: #139BC9;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #354242;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: 0px 10px;
+	padding-bottom: 5px;
+	font-size: 14px;
+}
+.nav > li > a
+{
+	padding: 0px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > li > a{
+    text-align: center;
+}
+@media (min-width: 300px) and (max-width: 768px) {}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > li > a{
+    text-align: center;
+    border: 0px;
+}
+.navbar-default .navbar-nav > li > a:hover
+{
+    border: 0px;
+}
+
+.card {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card {
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-clip: padding-box;
+}
+.card .card-title {
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #2a6ac9;
+    text-align: center;
+    padding-top: 16px;
+}
+
+.card .card-content {
+    text-align: center;
+    padding-bottom: 16px;
+    border-radius: 0 0 2px 2px;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+.card .card-content p {
+    text-align: center;
+    margin: 0;
+    color: inherit;
+}
+.card .card-action {
+    text-align: center;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 16px;
+    text-align: center;
+}
+.card .card-action a {
+    color: #342eff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.card .card-action a:hover {
+    text-align: right;
+    color: #747cff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.card .card-action .time {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-style: italic;
+}
+/**************************************
+form element
+**************************************/
