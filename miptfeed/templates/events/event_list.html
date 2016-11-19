@@ -3,23 +3,24 @@
 {% block content %}
 {% for event in object_list %}
 <div class="row">
-	<!-- Card Projects -->
-	<div class="col-md-8 col-md-offset-2">
-		<div class="card">
-			<div class="card-title">{{ event.title }}</div>
+            <!-- Card Projects -->
+    <div class="col-md-8 col-md-offset-2">
+        <div class="card">
+            <div class="card-title">Хакатон</div>
 
-			<div class="card-content">
-				<p>{{ event.description }}</p>
-			</div>
+            <div class = "card-time">19 ноября 17:00</div>
 
-			<div class="card-action">
-				<div class = "time">{{ event.date }}</div>
-				<a href="{% url 'events:event-detail' pk=event.pk %}" target="new_blank">
-					Подробнее
-				</a>
-			</div>
-		</div>
-	</div>
+            <div class = "card-place">БФК</div>
+
+            <div class="card-content">
+               <p>Неведомая хуйня</p>
+            </div>
+
+						<div class="card-action">
+                <a href="#" target="new_blank">Подробнее</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endfor %}
 {% endblock %}
