@@ -6,5 +6,8 @@ class Event(models.Model):
     place = models.CharField(max_length=256)
     description = models.TextField('описание события', default='')
 
+    category = models.ForeignKey('categories.Category', on_delete=models.SET_NULL,
+                                 blank=False, null=True)
+
     def __str__(self):
         return self.title
