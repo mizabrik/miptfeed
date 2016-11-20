@@ -1,7 +1,7 @@
 <!DOCTYPE html>{% load static bootstrap %}
 <html lang="ru" class=" js no-touch">
   <head>
-    <title>Tempo | HTML5 Responsive Bootstrap Template</title>
+    <title>MIPT feed</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
@@ -27,10 +27,10 @@
             <a class="navbar-brand" href="/">MIPT feed</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">\</ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="#all">Все</a></li>
               <li><a href="{% url 'users:social:begin' 'vk-oauth2' %}">Мое</a></li>
-              <li><a href="#best">Избранное</a></li>
             </ul>
           </div>
         </div>
