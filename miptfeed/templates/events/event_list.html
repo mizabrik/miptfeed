@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load bootstrap_pagination %}
 
 {% block title %}<title>События</title>{% endblock %}
 
 {% block content %}
+{% for event in object_list %}
 <div class="row">
-  {% for event in object_list %}
   <!-- Card Projects -->
   <div class="col-md-8 col-md-offset-2">
     <div class="card">
@@ -23,6 +24,12 @@
       </div>
     </div>
   </div>
-  {% endfor %}
+</div>
+{% endfor %}
+
+<div class="row text-center">
+  <div class="center-block">
+  {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+  </div>
 </div>
 {% endblock %}

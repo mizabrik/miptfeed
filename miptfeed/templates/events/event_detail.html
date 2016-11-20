@@ -10,9 +10,10 @@
 <div id="vk_api_transport"></div>
 <script type="text/javascript">
 function authInfo(response) {
-  if (!response.session) {
+  if (response.status != 'connected') {
     alert('Необходимо войти с помощью ВКонтакте.');
-    return false;
+    window.location = '../..'
+    return false
   }
 
   VK.Api.call('wall.post', {
@@ -20,20 +21,6 @@ function authInfo(response) {
     from_group: true,
     message: "{{ event.description|escapejs }}"
   }, function(r) {    
-    if (r.error) {
-      console.log(r.error);
-      if (r.error.error_code == 10007) {
-	alert('Для участия в акции необходимо разместить запись на стене.');
-      }               
-      if (r.error.error_code == 20) {
-	alert('Произошла неизвестная ошибка, пожалуйста повторите еще раз.');
-      }               
-      if (r.error.error_code == 14) {
-	alert('Произошла неизвестная ошибка, повторите поже.');                 
-      }               
-      return false;
-    }           
-    alert('Успешно размещено!');
     window.location = '../..'
   })
 }
