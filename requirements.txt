@@ -3,3 +3,4 @@ django-bootstrap-form
 python-social-auth
 vk
 django-categories
+django-datetime-widget

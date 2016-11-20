@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'bootstrapform',
+    'categories',
+    'categories.editor',
+    'datetimewidget',
     'events',
     'users',
-    'categories',
-    'categories.editor'
 ]
 
 MIDDLEWARE = [
@@ -173,4 +174,4 @@ OAUTH_TOKENS_VKONTAKTE_CLIENT_SECRET = ''                   # application secret
 OAUTH_TOKENS_VKONTAKTE_SCOPE = ['ads', 'wall' ,'photos', 'friends', 'stats']    # application scopes
 OAUTH_TOKENS_VKONTAKTE_USERNAME = ''                                 # user login
 OAUTH_TOKENS_VKONTAKTE_PASSWORD = ''                                    # user password
-OAUTH_TOKENS_VKONTAKTE_PHONE_END = ''  # last 4 digits of user mobile phone
+OAUTH_TOKENS_VKONTAKTE_PHONE_END = ''                                       # last 4 digits of user mobile phone

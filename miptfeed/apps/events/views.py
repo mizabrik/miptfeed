@@ -1,3 +1,5 @@
+from datetime import datetime as dt, timedelta
+
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView, ListView
 from django.urls import reverse
@@ -14,6 +16,16 @@ class EventListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         return context
+
+    def get_queryset(self):
+        filter_val = self.request.GET.get('filter', 'give-default-value')
+        order = self.request.GET.get('orderby', 'give-default-value')
+        new_context = Event.objects \
+                           .filter(date__gt=dt.now() - timedelta(hours=5),) \
+                           .order_by('date')
+        return new_context
+
+
 
 class EventDetailView(DetailView):
     model = Event
@@ -32,8 +44,8 @@ class CreateEventView(CreateView):
         token = request.user.social_auth.get(provider='vk-oauth2').extra_data['access_token']
         api = API(Session(), access_token=token)
         groups = api.groups.get(filter='editor', extended=True, fields='is_closed')[1:]
-        self.groups = [(str(group['gid']), group['name'], ) for group in groups
-                       if group['is_closed'] < 2]
+        self.groups = [(None, '---------',)] + [(str(group['gid']), group['name'], ) for group in groups
+                if group['is_closed'] < 2]
 
         return super(CreateEventView, self).dispatch(request, *args, **kwargs)
 
@@ -47,10 +59,6 @@ class CreateEventView(CreateView):
             'group': self.group}, current_app='events')
 
     def form_valid(self, form):
-        token = self.request.user.social_auth.get(provider='vk-oauth2').extra_data['access_token']
-        api = API(Session(), access_token=token)
-        data = form.cleaned_data
-
-        self.group = data['group']
+        self.group = form.cleaned_data['group']
 
         return super(CreateEventView, self).form_valid(form)

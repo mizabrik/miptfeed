@@ -25,15 +25,8 @@ function authInfo(response) {
       if (r.error.error_code == 10007) {
 	alert('Для участия в акции необходимо разместить запись на стене.');
       }               
-      if (r.error.error_code == 20) {
-	alert('Произошла неизвестная ошибка, пожалуйста повторите еще раз.');
-      }               
-      if (r.error.error_code == 14) {
-	alert('Произошла неизвестная ошибка, повторите поже.');                 
-      }               
       return false;
     }           
-    alert('Успешно размещено!');
     window.location = '../..'
   })
 }
