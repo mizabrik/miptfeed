@@ -672,6 +672,20 @@ cta
     font-style: italic;
     padding-bottom: 16px;
 }
+.text-when
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.text-where
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.text-descr
+{
+    margin-top: 20px;
+}
 /**************************************
 form element
 **************************************/
