@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('events.urls', namespace='events')),
     url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
