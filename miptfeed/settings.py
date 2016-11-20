@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'bootstrapform',
     'events',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -126,3 +131,44 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'static'),
 )
 print(os.path.join(PROJECT_DIR, 'static'))
+
+# Social auth
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'example@domain.com'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SOCIAL_AUTH_URL_NAMESPACE = 'users:social'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = ''                            # application ID
+SOCIAL_AUTH_VK_OAUTH2_SECRET = ''                   # application secret key
+
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.vk.VKOAuth2',
+)
+
+
+# VK API settings
+OAUTH_TOKENS_HISTORY = True                                                     # to keep in DB expired access tokens
+OAUTH_TOKENS_VKONTAKTE_CLIENT_ID = ''                                    # application ID
+OAUTH_TOKENS_VKONTAKTE_CLIENT_SECRET = ''                   # application secret key
+OAUTH_TOKENS_VKONTAKTE_SCOPE = ['ads', 'wall' ,'photos', 'friends', 'stats']    # application scopes
+OAUTH_TOKENS_VKONTAKTE_USERNAME = ''                                 # user login
+OAUTH_TOKENS_VKONTAKTE_PASSWORD = ''                                    # user password
+OAUTH_TOKENS_VKONTAKTE_PHONE_END = ''                                       # last 4 digits of user mobile phone

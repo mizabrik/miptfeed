@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static bootstrap %}
 <html lang="ru" class=" js no-touch">
   <head>
     <title>Tempo | HTML5 Responsive Bootstrap Template</title>
@@ -21,12 +21,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">MIPT feed</a>
+            <a class="navbar-brand" href="/">MIPT feed</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="#all">Все</a></li>
-              <li><a href="#my">Мое</a></li>
+              <li><a href="{% url 'users:social:begin' 'vk-oauth2' %}">Мое</a></li>
               <li><a href="#best">Избранное</a></li>
             </ul>
           </div>
