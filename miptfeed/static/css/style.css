@@ -10,6 +10,8 @@ link & button
 **************************************/
 body {
     padding-top: 80px;
+    background-image: url("../resources/geometry.png");
+    display:block;
 }
 
 .white
@@ -36,14 +38,14 @@ Header
     border-bottom: 1px solid #eee;
 }
 .navbar-default {
-    background-color: #fff;
+    background-color: #eee;
     border-color: rgba(231, 231, 231, 0.33);
     padding: 20px 0px;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
     color: #000000;
-    background-color: #fff;
+    background-color: #eee;
 }
 .navbar-nav {
     padding-top: 5px;
