@@ -3,6 +3,7 @@ from datetime import datetime as dt, timedelta
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView, ListView
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from events.forms import CreateEventForm
 from events.models import Event
@@ -11,6 +12,7 @@ from vk import Session, API
 from vk.exceptions import VkAPIError
 
 class EventListView(ListView):
+    paginate_by = 20
     model = Event
 
     def get_context_data(self, **kwargs):
@@ -25,7 +27,12 @@ class EventListView(ListView):
                            .order_by('date')
         return new_context
 
-
+class PersonalEventListView(LoginRequiredMixin, EventListView):
+    def get_queryset(self):
+        preferences = self.request.user.profile.preferences.all()
+        print(preferences)
+        return super(PersonalEventListView, self).get_queryset() \
+                .filter(category__in=preferences)
 
 class EventDetailView(DetailView):
     model = Event
@@ -36,7 +43,7 @@ class EventDetailView(DetailView):
             context['group'] = self.kwargs['group']
         return context
 
-class CreateEventView(CreateView):
+class CreateEventView(LoginRequiredMixin, CreateView):
     model = Event
     form_class = CreateEventForm
 
@@ -56,7 +63,8 @@ class CreateEventView(CreateView):
 
     def get_success_url(self):
         return reverse('events:share-event', kwargs={'pk': self.object.pk,
-            'group': self.group}, current_app='events')
+            'group': self.group}, current_app='events') if self.group else \
+            reverse('events:event-detail', kwargs={'pk': self.object.pk}, current_app='events')
 
     def form_valid(self, form):
         self.group = form.cleaned_data['group']

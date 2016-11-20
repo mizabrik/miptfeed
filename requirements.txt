@@ -4,3 +4,4 @@ python-social-auth
 vk
 django-categories
 django-datetime-widget
+django-bootstrap-pagination
