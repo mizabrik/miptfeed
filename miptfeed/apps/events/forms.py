@@ -12,7 +12,7 @@ class CreateEventForm(ModelForm):
     """
     class Meta:
         model = Event
-        fields = ('title', 'date', 'place', 'description',)
+        fields = ('title', 'date', 'place', 'description', 'category',)
 
     def clean_pass_id(self):
         data = self.cleaned_data['pass_id']
