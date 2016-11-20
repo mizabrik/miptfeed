@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-	<div class="page-title text-center">
-		<h1>{{ event.title }}</h1>
-		<p>{{ event.description }}</p>
-
+<div class="container">
+	<div class="row">
+		<div class="page-title text-center">
+				<h1>{{ event.title }}</h1>
+                <div class="text-when">
+                    <p><span class="bold">Когда: </span>{{ event.date }}</p>
+                </div>
+                <div class="text-where">
+                    <p><span class="bold">Где: </span>{{ event.place }}</p>
+                </div>
+                <div class="text-descr">
+                   <p>{{ event.description }}</p>
+                </div>
+		</div>
+        <div class="detail-image">
+             	<img src="img/mipt-banner1.jpg" height="500" width="500" style="margin-top: -100px">
+        </div>
 	</div>
 </div>
 {% endblock %}
