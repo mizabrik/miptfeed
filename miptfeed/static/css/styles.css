@@ -113,7 +113,6 @@ Header
     color: #139bc9;
     -webkit-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
     -moz-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
-    -ms-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
 }
 /*.container .jumbotron, .container-fluid .jumbotron {
@@ -441,7 +440,7 @@ p.cta-sub-title {
 .input-w label, .input-w input {
     float: none; /* if you had floats before? otherwise inline-block will behave differently */
     display: inline-block;
-    vertical-align: middle;
+    horiz-align: center;
     line-height: 21px;
     border-width: 0px;
     margin: 0px;
