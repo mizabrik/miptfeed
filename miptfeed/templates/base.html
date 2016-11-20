@@ -31,11 +31,13 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul id = "login-button" class="nav navbar-nav navbar-right">
-                {{ user }}
                 {% if user.is_anonymous %}
                     <li><a href = "/users/login">Войти</a></li>
                 {% else %}
                      <li><a href = "/users/logout">Выйти</a></li>
+                    <li><a href="{% url 'users:profile' pk=user.profile.pk %}">
+                      <span class="glyphicon glyphicon-user"></span>
+                     </a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
