@@ -43,6 +43,9 @@
             <ul class="nav navbar-nav navbar-right">
               <li {% if request.url_name == 'event-list' %}class="active"{% endif %}><a href="/">Все</a></li>
               <li {% if request.url_name == 'personal-event-list' %}class="active"{% endif %}><a href="{% url 'events:personal-event-list' %}">Мое</a></li>
+                {% if user.is_authorized %}
+                    <li {% if request.url_name == 'create-event' %}class="active"{% endif %}><a href="{% url 'events:create-event' %}">Создать событие</a></li>
+                {% endif %}
             </ul>
           </div>
         </div>
