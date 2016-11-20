@@ -83,31 +83,7 @@ Header
 {
     padding: 0px;
 }
-.jumbotron
-{
-    background-color: transparent;
-    padding-top: 150px;
-    /*padding-left: 300px;*/
-}
-.jumbotron p.big
-{
-    text-align: center;
-    line-height: 21px;
-    border-width: 0px;
-    margin: 0px;
-    padding: 0px;
-    letter-spacing: 6px;
-    font-size: 15px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: #ffffff;
-    -webkit-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
-    -moz-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
-    -ms-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
-    padding-top: 10px;
-}
+
 a.btn-banner {
     border: 1px solid #cdcdcd;
     padding: 12px 22px;
