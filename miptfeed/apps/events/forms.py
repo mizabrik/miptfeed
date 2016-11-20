@@ -14,7 +14,7 @@ class CreateEventForm(ModelForm):
     """
     class Meta:
         model = Event
-        fields = ('title', 'date', 'place', 'description', 'category',)
+        fields = ('title', 'date', 'place', 'description', 'image', 'category',)
         widgets = {
             'date': DateTimeWidget(usel10n = True, bootstrap_version=3)
         }

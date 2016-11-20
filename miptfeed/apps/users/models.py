@@ -6,7 +6,7 @@ import categories.models
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    preferences = models.ManyToManyField(categories.models.Category)
+    preferences = models.ManyToManyField(categories.models.Category, verbose_name='интересные категории')
 
 
 @receiver(post_save, sender=User)

@@ -10,10 +10,19 @@
 <div id="vk_api_transport"></div>
 <script type="text/javascript">
 function authInfo(response) {
+  alert(response)
   if (response.status != 'connected') {
     alert('Необходимо войти с помощью ВКонтакте.');
     window.location = '../..'
     return false
+  }
+
+  imgs = $("#post-image");
+  if (imgs.size() != 0) {
+    url = imgs[0].src;
+    VK.Api.call('photo.getWallUploadServer' {
+      group_id: {{ group }},
+    }, 
   }
 
   VK.Api.call('wall.post', {
@@ -26,7 +35,7 @@ function authInfo(response) {
 }
 
 $(document).ready(function() {
-    VK.Auth.login(authInfo, 8192+1);
+    VK.Auth.login(authInfo, 8192 + 4 + 1);
 });
 </script>
 {% endblock %}
@@ -48,7 +57,9 @@ $(document).ready(function() {
       </div>
     </div>
     <div class="detail-image">
-      <img src="img/mipt-banner1.jpg" height="500" width="500" style="margin-top: -100px">
+      {% if event.image %}
+      <img id="post-image" src="{{ event.image.url }}" height="500" width="500" style="margin-top: -100px">
+      {% endif %}
     </div>
   </div>
 </div>

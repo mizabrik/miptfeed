@@ -5,3 +5,4 @@ vk
 django-categories
 django-datetime-widget
 django-bootstrap-pagination
+pillow
