@@ -90,3 +90,8 @@ ENV/
 
 # Database
 .sqlite3
+db.sqlite3
+
+# Vim tmp files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]

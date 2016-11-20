@@ -2,87 +2,83 @@
 
 {% block content %}
 <div id="banner" class="section-padding" align="center">
-		<div class="container">
-			<div class="row">
-<form>
-            {{ form.as_p }} <button>ke</button>
- </form>
-				<div class="jumbotron">
-				  	<h1 class="small"> Hello, <span class="bold">{{ user.get_username }}</span></h1>
-				  	<p class="big">Customize your news feed below</p>
+  <div class="row">
+    <div class="jumbotron">
+      <h1 class="small"> Hello, <span class="bold">{{ user.get_username }}</span></h1>
+      <p class="big">Customize your news feed below</p>
+      {% include 'form.html' %}
+      <!--
+        <h1>{{ category }}</h1>
+        {% if category.parent %}
+        <h2>Go up to
+        <a href="{{ category.parent.get_absolute_url }}">
+        {{ category.parent }}
+        </a></h2>
+        {% endif %}
+        {% if category.description %}<p>{{ category.description }}</p>{% endif %}
+        {% if category.children.count %}
+        <h2>Subcategories</h2>
+        <ul>
+        {% for child in category.children.all %}
+        <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <h2>Entries</h2>
+        {% if category.entries_set.all %}
+        {% for entry in category.entries_set.all %}
+        <p><a href="{{ entry.get_absolute_url }}">{{ entry.headline }}</a></p>
+        {% endfor %}
+        {% else %}
+        <p><em>No entries for {{ category }}</em></p>
+        {% endif %}
+        <div class="list">
+        <form>
 
-                    <h1>{{ category }}</h1>
-                    {% if category.parent %}
-                        <h2>Go up to
-                            <a href="{{ category.parent.get_absolute_url }}">
-                                {{ category.parent }}
-                            </a></h2>
-                    {% endif %}
-                    {% if category.description %}<p>{{ category.description }}</p>{% endif %}
-                    {% if category.children.count %}
-                        <h2>Subcategories</h2>
-                        <ul>
-                            {% for child in category.children.all %}
-                            <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    <h2>Entries</h2>
-                    {% if category.entries_set.all %}
-                        {% for entry in category.entries_set.all %}
-                            <p><a href="{{ entry.get_absolute_url }}">{{ entry.headline }}</a></p>
-                        {% endfor %}
-                    {% else %}
-                        <p><em>No entries for {{ category }}</em></p>
-                    {% endif %}
-					<!--<div class="list">
-						<form>
+        <div class="grouping">
+        <label>Lectures</label>
+        <div class="input-w">
+        <input type="checkbox" id="Option1"/>
+        <label for="Option1">Option 1</label>
+        </div>
 
-							<div class="grouping">
-								<label>Lectures</label>
-								<div class="input-w">
-									<input type="checkbox" id="Option1"/>
-									<label for="Option1">Option 1</label>
-								</div>
+        <div class="input-w">
+        <input type="checkbox" id="Option2"/>
+        <label for="Option2">Option 2</label>
+        </div>
+        </div>
 
-								<div class="input-w">
-									<input type="checkbox" id="Option2"/>
-									<label for="Option2">Option 2</label>
-								</div>
-							</div>
+        <div class="grouping">
+        <label>Group 2</label>
+        <div class="input-w">
+        <input type="checkbox" id="Option3" />
+        <label for="Option3">Option 3</label>
+        </div>
+        </div>
 
-							<div class="grouping">
-								<label>Group 2</label>
-								<div class="input-w">
-									<input type="checkbox" id="Option3" />
-									<label for="Option3">Option 3</label>
-								</div>
-							</div>
+        <div class="grouping">
+        <label>Group 3</label>
+        <div class="input-w">
+        <input type="checkbox" id="Option4"/>
+        <label for="Option4">Option 4</label>
+        </div>
+        <div class="input-w">
+        <input type="checkbox" id="Option5" />
+        <label for="Option5">Option 5</label>
+        </div>
+        </div>
 
-							<div class="grouping">
-								<label>Group 3</label>
-								<div class="input-w">
-									<input type="checkbox" id="Option4"/>
-									<label for="Option4">Option 4</label>
-								</div>
-								<div class="input-w">
-									<input type="checkbox" id="Option5" />
-									<label for="Option5">Option 5</label>
-								</div>
-							</div>
+        </form>
 
-						</form>
+        <input type="checkbox" name="checks[]" value="1" />
+        <input type="checkbox" name="checks[]" value="2" />
+        <input type="checkbox" name="checks[]" value="3" />
+        <input type="checkbox" name="checks[]" value="4" />
 
-						<input type="checkbox" name="checks[]" value="1" />
-						<input type="checkbox" name="checks[]" value="2" />
-						<input type="checkbox" name="checks[]" value="3" />
-						<input type="checkbox" name="checks[]" value="4" />
+        </div>-->
 
-					</div>-->
+    </div>
 
-				</div>
-
-			</div>
-		</div>
-	</div>
+  </div>
+</div>
 {% endblock %}
