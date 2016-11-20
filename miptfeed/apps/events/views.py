@@ -1,11 +1,13 @@
 from datetime import datetime as dt, timedelta
+import requests, os.path, json
 
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, View
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http.response import HttpResponse
 
-from events.forms import CreateEventForm
+from events.forms import CreateEventForm, VkImageUploaderForm
 from events.models import Event
 
 from vk import Session, API
@@ -49,8 +51,8 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         token = request.user.social_auth.get(provider='vk-oauth2').extra_data['access_token']
-        api = API(Session(), access_token=token)
-        groups = api.groups.get(filter='editor', extended=True, fields='is_closed')[1:]
+        self.api = API(Session(), access_token=token)
+        groups = self.api.groups.get(filter='editor', extended=True, fields='is_closed')[1:]
         self.groups = [(None, '---------',)] + [(str(group['gid']), group['name'], ) for group in groups
                 if group['is_closed'] < 2]
 
@@ -69,4 +71,29 @@ class CreateEventView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         self.group = form.cleaned_data['group']
 
+        img = form.cleaned_data.get('image')
+        if img and group:
+            path = os.path.join(settings.MEDIA_ROOT, 'events', img)
+            upload_url = api.photos.getWallUploadServer(group_id=self.group).upload_url
+            r = requests.post('http://httpbin.org/post',
+                    files={'image.' + img.rspilit('.', 1)[1]: open(path, 'rb')})
+            self.upload_info = json.loads(r.text)
+
         return super(CreateEventView, self).form_valid(form)
+
+class VkImageUploaderView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        form = VkImageUploaderForm(data=self.request.POST)
+        print(form)
+        if form.is_valid():
+            token = request.user.social_auth.get(provider='vk-oauth2').extra_data['access_token']
+            print(token)
+            api = API(Session(), access_token=token)
+            path = form.cleaned_data.get('img')
+            print(path)
+            upload_url = form.cleaned_data.get('upload_url')
+            #r = requests.post(upload_url, files={'file1': open(path, 'rb')})
+            r = requests.post("http://127.0.0.1:8080/", files={'file1': open(path, 'rb')})
+            return HttpResponse(r.text, content_type="text/plain", status=200)
+        return HttpResponse('kek', content_type="text/plain", status=500)

@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import categories.models
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     preferences = models.ManyToManyField(categories.models.Category, verbose_name='интересные категории')

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="col-md-offset-3 col-md-6">
+  <div class="page-header"><h2 style="text-align: center;">Регистрация</h2></div>
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            {{ form.as_table }}
+        </table>
+        <button margin-top = 100px class="btn btn-primary btn-block" type="submit" value="Register">Зарегистрироваться</button><br>
+    </form>
+    <a href="/users/login">Войти</a>
+    </div>
+{% endblock %}

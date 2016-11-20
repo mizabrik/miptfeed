@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'datetimewidget',
     'events',
     'users',
+    'registration'
 ]
 
 MIDDLEWARE = [
