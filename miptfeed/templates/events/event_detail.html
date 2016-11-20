@@ -1,23 +1,66 @@
 {% extends 'base.html' %}
 
+{% if group %}
+{% block after-body %}
+<script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
+<script type="text/javascript"> VK.init({apiId: 5737516, onlyWidgets: false}); </script>
+
+<div id="vk_api_transport"></div>
+<script type="text/javascript">
+function authInfo(response) {
+  if (!response.session) {
+    alert('Необходимо войти с помощью ВКонтакте.');
+    return false;
+  }
+
+  VK.Api.call('wall.post', {
+    owner_id: -{{ group }},
+    from_group: true,
+    message: "{{ event.description|escapejs }}"
+  }, function(r) {    
+    if (r.error) {
+      console.log(r.error);
+      if (r.error.error_code == 10007) {
+	alert('Для участия в акции необходимо разместить запись на стене.');
+      }               
+      if (r.error.error_code == 20) {
+	alert('Произошла неизвестная ошибка, пожалуйста повторите еще раз.');
+      }               
+      if (r.error.error_code == 14) {
+	alert('Произошла неизвестная ошибка, повторите поже.');                 
+      }               
+      return false;
+    }           
+    alert('Успешно размещено!');
+    window.location = '../..'
+  })
+}
+
+$(document).ready(function() {
+    VK.Auth.login(authInfo, 8192+1);
+});
+</script>
+{% endblock %}
+{% endif %}
+
 {% block content %}
 <div class="container">
-	<div class="row">
-		<div class="page-title text-center">
-				<h1>{{ event.title }}</h1>
-                <div class="text-when">
-                    <p><span class="bold">Когда: </span>{{ event.date }}</p>
-                </div>
-                <div class="text-where">
-                    <p><span class="bold">Где: </span>{{ event.place }}</p>
-                </div>
-                <div class="text-descr">
-                   <p>{{ event.description }}</p>
-                </div>
-		</div>
-        <div class="detail-image">
-             	<img src="img/mipt-banner1.jpg" height="500" width="500" style="margin-top: -100px">
-        </div>
-	</div>
+  <div class="row">
+    <div class="page-title text-center">
+      <h1>{{ event.title }}</h1>
+      <div class="text-when">
+	<p><span class="bold">Когда: </span>{{ event.date }}</p>
+      </div>
+      <div class="text-where">
+	<p><span class="bold">Где: </span>{{ event.place }}</p>
+      </div>
+      <div class="text-descr">
+	<p>{{ event.description }}</p>
+      </div>
+    </div>
+    <div class="detail-image">
+      <img src="img/mipt-banner1.jpg" height="500" width="500" style="margin-top: -100px">
+    </div>
+  </div>
 </div>
 {% endblock %}

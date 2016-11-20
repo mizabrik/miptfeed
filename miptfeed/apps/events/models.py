@@ -5,3 +5,6 @@ class Event(models.Model):
     date = models.DateTimeField('время события')
     place = models.CharField(max_length=256)
     description = models.TextField('описание события', default='')
+
+    def __str__(self):
+        return self.title
