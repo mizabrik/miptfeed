@@ -1,7 +1,7 @@
 <!DOCTYPE html>{% load static bootstrap %}
 <html lang="ru" class=" js no-touch">
   <head>
-    <title>MIPT feed</title>
+    {% block title %} {% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
@@ -27,7 +27,14 @@
             <a class="navbar-brand" href="/">MIPT feed</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">\</ul>
+            <ul id = "login-button" class="nav navbar-nav navbar-right">
+                {{ user }}
+                {% if user.is_anonymous %}
+                    <li><a href = "/users/login">Войти</a></li>
+                {% else %}
+                     <li><a href = "/users/logout">Выйти</a></li>
+                {% endif %}
+            </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="#all">Все</a></li>
               <li><a href="{% url 'users:social:begin' 'vk-oauth2' %}">Мое</a></li>
